@@ -1,5 +1,9 @@
 # jQuery2.0.3 源码解析
 
-[1.jq 的形参](https://github.com/13hua/jQuery2.0.3/blob/master/notes/1.jq的形参.md)
+## 一、理解架构
 
-[2.jq 框架结构简化](https://github.com/13hua/jQuery2.0.3/blob/master/notes/2.jq框架结构简化.md)
+[1.1 框架结构简化](https://github.com/13hua/jQuery2.0.3/blob/master/notes/1.1 框架结构简化.md)
+
+[1.2.立即调用表达式](https://github.com/13hua/jQuery2.0.3/blob/master/notes/1.2.立即调用表达式.md)
+
+[1.3 类数组对象](https://github.com/13hua/jQuery2.0.3/blob/master/notes/1.3类数组对象.md)
