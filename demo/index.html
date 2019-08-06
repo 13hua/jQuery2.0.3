@@ -8,12 +8,12 @@
 </head>
 
 <body>
-  <h1>jQuery </h1>
+  <h1 class="title">jQuery </h1>
 
   <script src="../jquery-2.0.3.js"></script>
-  <script src="./var.js"></script>
+  <!-- <script src="./var.js"></script> -->
   <script>
-    var dfd = jQuery.Deferred();
+    var dfd = $.Deferred();
     setTimeout(function () {
       console.log(1);
       dfd.resolve();
@@ -21,6 +21,7 @@
     dfd.done(function () {
       console.log(2)
     }) // 1,2
+    console.log('jq', $('.title'));
   </script>
 
 </body>
