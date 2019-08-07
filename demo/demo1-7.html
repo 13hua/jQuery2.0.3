@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <title>dom加载</title>
+</head>
+
+<body>
+  <script>
+    window.addEventListener("load", function () {
+      show('load事件回调')
+    }, false);
+
+    document.addEventListener("DOMContentLoaded", function () {
+      show('DOMContentLoaded回调')
+    }, false);
+  </script>
+
+  <script src="../jquery-2.0.3.js"></script>
+
+  <script type="text/javascript">
+    show('观察脚本加载的顺序')
+
+
+
+
+
+
+    show('脚本解析一')
+
+    //测试加载
+    $(function () {
+      show('脚本解析二')
+    })
+
+    show('脚本解析三')
+
+    function show(str) {
+      console.log(str)
+    }
+  </script>
+</body>
+
+</html>

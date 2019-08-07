@@ -1,21 +1,21 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <script src="http://img.mukewang.com/down/540812440001e40e00000000.js" type="text/javascript"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="../jquery-2.0.3.js"></script>
   <style type="text/css">
     div {
-      width: 30px;
-      height: 10px;
+      width: 100px;
+      height: 30px;
       float: left;
+      border: 1px solid rebeccapurple;
     }
   </style>
-  <title>无标题文档</title>
+  <title>类数组对象结构</title>
 </head>
 
 <body>
-
   <button id="test1">jQuey[0]</button>
   <button id="test2">jQuey.get</button>
   <button id="test3">aQuery[0]</button>
@@ -23,47 +23,54 @@
 
   <p id="book">book</p>
 
-  <div id="show1"></div>
-  <div id="show2"></div>
-  <div id="show3"></div>
-  <div id="show4"></div>
+  <div id="show1">show1</div>
+  <div id="show2">show2</div>
+  <div id="show3">show3</div>
+  <div id="show4">show4</div>
 
   <script type="text/javascript">
     var aQuery = function (selector) {
       //强制为对象
+      // [JavaScript instanceof 运算符深入剖析] (https://www.ibm.com/developerworks/cn/web/1306_jiangjj_jsinstanceof/index.html)
       if (!(this instanceof aQuery)) {
-        return new aQuery(selector);
+        // 是否是aQuery对象的实例
+        return new aQuery(selector); // new操作之后的this指向实例对象
       }
-      var elem = document.getElementById(/[^#].*/.exec(selector)[0]);
+      var elem = document.getElementById(/[^#].*/.exec(selector)[
+        0
+      ]); // /[^#].*/.exec(selector)查找非#的字符并返回， exec() 该函数返回一个数组，其中存放匹配的结果，/[^#].*/.exec(selector)[0]是匹配到的结果。如果未找到匹配，则返回值为 null
+      // 给对象添加属性和方法
       this.length = 1;
       this[0] = elem;
       this.context = document;
       this.selector = selector;
       this.get = function (num) {
         return this[num];
-      }
+      };
       return this;
-    }
+    };
 
     //结果是一个dom元素,可以把代码放到Google Chrome下运行
     //按F12通过调试命令 console.log() 打印出对象
-    $("#test1").click(function () {
-      $('#show1').append($('#book')[0])
-    })
+    $('#test1').click(function () {
+      console.log($('#book'));
+      console.log(aQuery('#book'));
+      $('#show1').append($('#book')[0]);
+    });
 
-    $("#test2").click(function () {
-      $('#show2').append($('#book').get(0))
-    })
+    $('#test2').click(function () {
+      $('#show2').append($('#book').get(0));
+    });
 
-    $("#test3").click(function () {
-      $('#show3').append(aQuery("#book")[0])
-    })
+    $('#test3').click(function () {
+      $('#show3').append(aQuery('#book')[0]);
+      // console.log(aQuery('#book').get('selector'));
+    });
 
-    $("#test4").click(function () {
-      $('#show4').append(aQuery("#book").get(0))
-    })
+    $('#test4').click(function () {
+      $('#show4').append(aQuery('#book').get(0));
+    });
   </script>
-
 </body>
 
 </html>
