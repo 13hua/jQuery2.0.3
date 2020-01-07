@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!-- <script src="http://img.mukewang.com/down/540812440001e40e00000000.js" type="text/javascript"></script>
+  <script src="http://img.mukewang.com/down/541f6ff70001a0a500000000.js" type="text/javascript"></script> -->
+  <title></title>
+</head>
+
+<body>
+
+  <div id="aaron"></div>
+
+  <script type="text/javascript">
+    var $$ = ajQuery = function (selector) {
+      this.selector = selector
+      return this;
+    }
+
+    ajQuery.fn = ajQuery.prototype = {
+      selectorName: function () {
+        return this.selector;
+      },
+      constructor: ajQuery
+    }
+    console.log('$$', $$)
+    console.log('ajQuery', ajQuery)
+    var a = new $$('aaa') //实例化
+    console.log('a', a)
+    console.log(a.selectorName()) //aaa //得到选择器名字
+    console.log($$.selectorName()) //aaa //得到选择器名字
+
+    var $$ = ajQuery = function (selector) {
+      if (!(this instanceof ajQuery)) {
+        return new ajQuery(selector)
+      }
+      this.selector = selector
+      return this
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .flex-wrap {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin: 10px;
+    }
+
+    .flex-wrap .flex-item {
+      width: 25%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .flex-wrap .flex-item .content {
+      width: 100%;
+      height: 50px;
+      background: goldenrod;
+      line-height: 50px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .img-box {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .img-box .bg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, .3)
+    }
+
+    .img-box .img-wrap {
+      position: absolute;
+      top: 50%;
+      left: 0;
+    }
+
+    .img-box .img-wrap .img {
+      width: 100%;
+      margin-top: -50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex-wrap">
+    <div class="flex-item">
+      <div class="content">
+        图片
+      </div>
+    </div>
+    <div class="flex-item">
+      <div class="content">
+        图片
+      </div>
+    </div>
+    <div class="flex-item">
+      <div class="content">
+        图片
+      </div>
+    </div>
+    <div class="flex-item">
+      <div class="content">
+        图片
+      </div>
+    </div>
+  </div>
+
+  <div class="img-box">
+    <div class="bg"></div>
+    <div class="img-wrap">
+      <img class="img" src="../img/demo.jpg" alt="">
+    </div>
+  </div>
+</body>
+
+</html>
