@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <title></title>
+</head>
+
+<body>
+
+  <div id="aaron"></div>
+
+  <script type="text/javascript">
+    var $$ = ajQuery = function (seletor) {
+      return new ajQuery.fn.init(seletor)
+    }
+
+    ajQuery.fn = ajQuery.prototype = {
+      name: 'aaron',
+      init: function (seletor) {
+        this.seletor = seletor;
+        return this;
+      },
+      constructor: ajQuery
+    }
+
+    ajQuery.fn.init.prototype = ajQuery.fn;
+
+    ajQuery.extend = ajQuery.fn.extend = function () {
+      var options, src, copy,
+        target = arguments[0] || {},
+        i = 1,
+        length = arguments.length;
+
+      // 只有一个参数，则扩展对象（即目标参数）为jQuery本身，而target表示的参数不在为目标参数
+      if (i === length) {
+        target = this;
+        i--;
+      }
+
+      for (; i < length; i++) {
+        // 获取第i个参数，且该参数不为null和undefined，null==undefined值为true
+        if ((options = arguments[i]) != null) {
+          for (name in options) {
+            copy = options[name];
+            // 覆盖拷贝
+            target[name] = copy;
+          }
+
+        }
+      }
+      return target;
+    }
+
+    ajQuery.fn.extend({
+      merge: function (first, second) {
+
+        var len = +second.length,
+
+          j = 0,
+
+          i = first.length;
+
+        for (; j < len; j++) {
+
+          first[i++] = second[j];
+
+        }
+
+        first.length = i;
+
+        return first;
+
+      },
+      setName: function (name) {
+        this.name = name;
+        return this;
+      },
+      getName: function (name) {
+        console.log(this.name)
+        return this;
+      }
+    })
+
+    $$().setName('慕课网-aaron').getName()
+  </script>
+</body>
+
+</html>

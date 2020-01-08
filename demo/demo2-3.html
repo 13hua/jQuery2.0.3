@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <title></title>
+</head>
+
+<body>
+
+  <div id="aaron"></div>
+
+  <script type="text/javascript">
+    $('.aaron').each() //作为实例方法存在
+    $.each() //作为静态方法存在
+
+    jQuery.prototype = {
+      each: function (callback, args) {
+        return jQuery.each(this, callback, regs);
+      }
+    }
+
+    ajQuery.fn = ajQuery.prototype = {
+      name: 'aaron',
+      init: function (selector) {
+        this.selector = selector;
+        return this
+      },
+      constructor: ajQuery
+    }
+    ajQuery.fn.init.prototype = ajQuery.fn
+  </script>
+</body>
+
+</html>

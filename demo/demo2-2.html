@@ -38,6 +38,24 @@
       this.selector = selector
       return this
     }
+
+    var $$ = ajQuery = function (selector) {
+      this.selector = selector
+      return new ajQuery(selector)
+    }
+
+    var $$ = ajQuery = function (selector) {
+      //把原型上的init作为构造器
+      return new ajQuery.fn.init(selector)
+    }
+
+    ajQuery.fn = ajQuery.prototype = {
+      name: 'aaron',
+      init: function () {
+        console.log(this)
+      },
+      constructor: ajQuery
+    }
   </script>
 </body>
 
