@@ -23,3 +23,5 @@
 [2.5插件接口设计](./notes/2.5插件接口设计.md)
 
 [2.6回溯处理的设计](./notes/2.6回溯处理的设计.md)
+
+[2.7end与addBack](./notes/2.7end与addBack.md)

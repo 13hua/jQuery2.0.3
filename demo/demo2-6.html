@@ -3,16 +3,59 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
   <title></title>
 </head>
 
 <body>
 
-  <div id="aaron"></div>
+  <button id="test1">直接处理</button>
+  <button id="test2">通过end连贯处理</button>
+
+  <ul class="first">
+    <li class="foo">list item 1</li>
+    <li>list item 2</li>
+    <li class="bar">list item 3</li>
+  </ul>
+  <ul class="second">
+    <li class="foo">list item 1</li>
+    <li>list item 2</li>
+    <li class="bar">list item 3</li>
+  </ul>
+
+  <ul id="aaron">
+    parent
+    <li>child</li>
+  </ul>
 
   <script type="text/javascript">
+    var aaron = $("#aaron");
+    aaron.find('li').click(function () {
+      alert(1)
+    })
 
+    aaron.find('li').click(function () {
+      alert(1);
+    }).end().click(function () {
+      alert(2)
+    })
+
+
+
+
+    $("#test1").click(function () {
+      //直接处理
+      var first = $('ul.first');
+      first.find('.foo').css('background-color', 'red')
+      first.find('.bar').css('background-color', 'green');
+    })
+
+
+    $("#test2").click(function () {
+      //通过end连贯处理
+      $('ul.second').find('.foo').css('background-color', 'red')
+        .end().find('.bar').css('background-color', 'green');
+    })
   </script>
 </body>
 
