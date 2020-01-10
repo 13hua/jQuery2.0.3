@@ -1,5 +1,8 @@
 # jQuery2.0.3 源码解析
 
+推荐阅读：
+[jQuery源码解析（架构与依赖模块）](https://www.imooc.com/learn/172)
+
 ## 一、理解架构
 
 [1.1 框架结构](./notes/1.1框架结构简化.md)
@@ -25,3 +28,9 @@
 [2.6回溯处理的设计](./notes/2.6回溯处理的设计.md)
 
 [2.7end与addBack](./notes/2.7end与addBack.md)
+
+[2.8仿栈与队列的操作](./notes/2.8仿栈与队列的操作.md)
+
+[2.9get与eq的区别](./notes/2.9get与eq的区别.md)
+
+[2.10迭代器](./notes/2.10迭代器.md)
