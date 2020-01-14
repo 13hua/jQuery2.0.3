@@ -233,9 +233,9 @@
 		// Execute a callback for every element in the matched set.
 		// (You can seed the arguments with an array of args, but this is
 		// only used internally.)
-		each: function (callback, args) {
-			return jQuery.each(this, callback, args);
-		},
+each: function (callback, args) {
+	return jQuery.each(this, callback, args);
+},
 
 		ready: function (fn) {
 			// Add the callback
@@ -558,54 +558,54 @@
 		},
 
 		// args is for internal usage only
-		each: function (obj, callback, args) {
-			var value,
-				i = 0,
-				length = obj.length,
-				isArray = isArraylike(obj);
+each: function (obj, callback, args) {
+	var value,
+		i = 0,
+		length = obj.length,
+		isArray = isArraylike(obj);
 
-			if (args) {
-				if (isArray) {
-					for (; i < length; i++) {
-						value = callback.apply(obj[i], args);
+	if (args) {
+		if (isArray) {
+			for (; i < length; i++) {
+				value = callback.apply(obj[i], args);
 
-						if (value === false) {
-							break;
-						}
-					}
-				} else {
-					for (i in obj) {
-						value = callback.apply(obj[i], args);
-
-						if (value === false) {
-							break;
-						}
-					}
-				}
-
-				// A special, fast, case for the most common use of each
-			} else {
-				if (isArray) {
-					for (; i < length; i++) {
-						value = callback.call(obj[i], i, obj[i]);
-
-						if (value === false) {
-							break;
-						}
-					}
-				} else {
-					for (i in obj) {
-						value = callback.call(obj[i], i, obj[i]);
-
-						if (value === false) {
-							break;
-						}
-					}
+				if (value === false) {
+					break;
 				}
 			}
+		} else {
+			for (i in obj) {
+				value = callback.apply(obj[i], args);
 
-			return obj;
-		},
+				if (value === false) {
+					break;
+				}
+			}
+		}
+
+		// A special, fast, case for the most common use of each
+	} else {
+		if (isArray) {
+			for (; i < length; i++) {
+				value = callback.call(obj[i], i, obj[i]);
+
+				if (value === false) {
+					break;
+				}
+			}
+		} else {
+			for (i in obj) {
+				value = callback.call(obj[i], i, obj[i]);
+
+				if (value === false) {
+					break;
+				}
+			}
+		}
+	}
+
+	return obj;
+},
 
 		trim: function (text) {
 			return text == null ? "" : core_trim.call(text);
@@ -5483,39 +5483,39 @@
 			}, null, value, arguments.length);
 		},
 
-		append: function () {
-			return this.domManip(arguments, function (elem) {
-				if (this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9) {
-					var target = manipulationTarget(this, elem);
-					target.appendChild(elem);
-				}
-			});
-		},
+append: function () {
+	return this.domManip(arguments, function (elem) {
+		if (this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9) {
+			var target = manipulationTarget(this, elem);
+			target.appendChild(elem);
+		}
+	});
+},
 
-		prepend: function () {
-			return this.domManip(arguments, function (elem) {
-				if (this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9) {
-					var target = manipulationTarget(this, elem);
-					target.insertBefore(elem, target.firstChild);
-				}
-			});
-		},
+prepend: function () {
+	return this.domManip(arguments, function (elem) {
+		if (this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9) {
+			var target = manipulationTarget(this, elem);
+			target.insertBefore(elem, target.firstChild);
+		}
+	});
+},
 
-		before: function () {
-			return this.domManip(arguments, function (elem) {
-				if (this.parentNode) {
-					this.parentNode.insertBefore(elem, this);
-				}
-			});
-		},
+before: function () {
+	return this.domManip(arguments, function (elem) {
+		if (this.parentNode) {
+			this.parentNode.insertBefore(elem, this);
+		}
+	});
+},
 
-		after: function () {
-			return this.domManip(arguments, function (elem) {
-				if (this.parentNode) {
-					this.parentNode.insertBefore(elem, this.nextSibling);
-				}
-			});
-		},
+after: function () {
+	return this.domManip(arguments, function (elem) {
+		if (this.parentNode) {
+			this.parentNode.insertBefore(elem, this.nextSibling);
+		}
+	});
+},
 
 		// keepData is for internal use only--do not document
 		remove: function (selector, keepData) {
@@ -5639,87 +5639,87 @@
 			return this.remove(selector, true);
 		},
 
-		domManip: function (args, callback, allowIntersection) {
+domManip: function (args, callback, allowIntersection) {
 
-			// Flatten any nested arrays
-			args = core_concat.apply([], args);
+	// Flatten any nested arrays
+	args = core_concat.apply([], args);
 
-			var fragment, first, scripts, hasScripts, node, doc,
-				i = 0,
-				l = this.length,
-				set = this,
-				iNoClone = l - 1,
-				value = args[0],
-				isFunction = jQuery.isFunction(value);
+	var fragment, first, scripts, hasScripts, node, doc,
+		i = 0,
+		l = this.length,
+		set = this,
+		iNoClone = l - 1,
+		value = args[0],
+		isFunction = jQuery.isFunction(value);
 
-			// We can't cloneNode fragments that contain checked, in WebKit
-			if (isFunction || !(l <= 1 || typeof value !== "string" || jQuery.support.checkClone || !rchecked.test(value))) {
-				return this.each(function (index) {
-					var self = set.eq(index);
-					if (isFunction) {
-						args[0] = value.call(this, index, self.html());
-					}
-					self.domManip(args, callback, allowIntersection);
-				});
+	// We can't cloneNode fragments that contain checked, in WebKit
+	if (isFunction || !(l <= 1 || typeof value !== "string" || jQuery.support.checkClone || !rchecked.test(value))) {
+		return this.each(function (index) {
+			var self = set.eq(index);
+			if (isFunction) {
+				args[0] = value.call(this, index, self.html());
 			}
+			self.domManip(args, callback, allowIntersection);
+		});
+	}
 
-			if (l) {
-				fragment = jQuery.buildFragment(args, this[0].ownerDocument, false, !allowIntersection && this);
-				first = fragment.firstChild;
+	if (l) {
+		fragment = jQuery.buildFragment(args, this[0].ownerDocument, false, !allowIntersection && this);
+		first = fragment.firstChild;
 
-				if (fragment.childNodes.length === 1) {
-					fragment = first;
-				}
-
-				if (first) {
-					scripts = jQuery.map(getAll(fragment, "script"), disableScript);
-					hasScripts = scripts.length;
-
-					// Use the original fragment for the last item instead of the first because it can end up
-					// being emptied incorrectly in certain situations (#8070).
-					for (; i < l; i++) {
-						node = fragment;
-
-						if (i !== iNoClone) {
-							node = jQuery.clone(node, true, true);
-
-							// Keep references to cloned scripts for later restoration
-							if (hasScripts) {
-								// Support: QtWebKit
-								// jQuery.merge because core_push.apply(_, arraylike) throws
-								jQuery.merge(scripts, getAll(node, "script"));
-							}
-						}
-
-						callback.call(this[i], node, i);
-					}
-
-					if (hasScripts) {
-						doc = scripts[scripts.length - 1].ownerDocument;
-
-						// Reenable scripts
-						jQuery.map(scripts, restoreScript);
-
-						// Evaluate executable scripts on first document insertion
-						for (i = 0; i < hasScripts; i++) {
-							node = scripts[i];
-							if (rscriptType.test(node.type || "") &&
-								!data_priv.access(node, "globalEval") && jQuery.contains(doc, node)) {
-
-								if (node.src) {
-									// Hope ajax is available...
-									jQuery._evalUrl(node.src);
-								} else {
-									jQuery.globalEval(node.textContent.replace(rcleanScript, ""));
-								}
-							}
-						}
-					}
-				}
-			}
-
-			return this;
+		if (fragment.childNodes.length === 1) {
+			fragment = first;
 		}
+
+		if (first) {
+			scripts = jQuery.map(getAll(fragment, "script"), disableScript);
+			hasScripts = scripts.length;
+
+			// Use the original fragment for the last item instead of the first because it can end up
+			// being emptied incorrectly in certain situations (#8070).
+			for (; i < l; i++) {
+				node = fragment;
+
+				if (i !== iNoClone) {
+					node = jQuery.clone(node, true, true);
+
+					// Keep references to cloned scripts for later restoration
+					if (hasScripts) {
+						// Support: QtWebKit
+						// jQuery.merge because core_push.apply(_, arraylike) throws
+						jQuery.merge(scripts, getAll(node, "script"));
+					}
+				}
+
+				callback.call(this[i], node, i);
+			}
+
+			if (hasScripts) {
+				doc = scripts[scripts.length - 1].ownerDocument;
+
+				// Reenable scripts
+				jQuery.map(scripts, restoreScript);
+
+				// Evaluate executable scripts on first document insertion
+				for (i = 0; i < hasScripts; i++) {
+					node = scripts[i];
+					if (rscriptType.test(node.type || "") &&
+						!data_priv.access(node, "globalEval") && jQuery.contains(doc, node)) {
+
+						if (node.src) {
+							// Hope ajax is available...
+							jQuery._evalUrl(node.src);
+						} else {
+							jQuery.globalEval(node.textContent.replace(rcleanScript, ""));
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return this;
+}
 	});
 
 	jQuery.each({

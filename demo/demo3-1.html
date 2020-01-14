@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script src="http://img.mukewang.com/down/540812440001e40e00000000.js" type="text/javascript"></script>
+  <title></title>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+
+  <div id="aaron"></div>
+
+  <script type="text/javascript">
+    function Aaron(List, callback) {
+      setTimeout(function () {
+        var task;
+        if (task = List.shift()) { //List.shift() 删除数组的第一个元素
+          task(); //执行函数
+        }
+        if (List.length > 0) {
+          //递归分解
+          arguments.callee(List)
+        } else {
+          callback()
+        }
+      }, 25)
+    }
+
+    //调用
+    Aaron(
+      [function () {
+        console.log('a')
+      }, function () {
+        console.log('b')
+      }, function () {
+        console.log('c')
+      }],
+      function () {
+        console.log('callback')
+      }
+    )
+
+var callbacks = $.Callbacks();
+callbacks.add(function () {
+  console.log('a');
+})
+callbacks.add(function () {
+  console.log('b');
+})
+callbacks.fire(); //输出结果：'a' 'b'
+  </script>
+</body>
+
+</html>
